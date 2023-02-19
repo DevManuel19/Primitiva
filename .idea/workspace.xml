@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f543e266-96e2-4ae7-80b6-0b877c6b7b01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/GameMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/GameMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/RandomNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/RandomNumbers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -1,4 +1,5 @@
 package com.manuelportero.primitiva;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -6,14 +7,14 @@ import java.util.Scanner;
 public class Main {
     private static final int NUMEROS_JUGADOR = 6;
     public static Scanner lector = new Scanner(System.in);
-    public static Random random = new Random();
-
+    public static RandomNumbers randomNumbers = new RandomNumbers();
     /**
      * Bucle principal donde se llama a los menú. Pide si quiere jugar con numeros aleatorios o intrudicidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
      * @param args
      */
     public static void main(String[] args) {
+
         int[] num = new int[NUMEROS_JUGADOR];
         int numLector;
         boolean valido;
@@ -31,10 +32,12 @@ public class Main {
                     }
                     break;
                 case 2:
-                    for(int i = 0; i < num.length; i++) {
-                        num[i] = random.nextInt(9 - 1 + 1) + 1;
-                    }
-                    System.out.println(Arrays.toString(num));
+                    System.out.println("Combinación ganadora:");
+                    System.out.println(Arrays.toString(randomNumbers.generarSeis(randomNumbers.rellenarBombo1())));
+                    System.out.println("Numero complementario:");
+                    System.out.println(randomNumbers.generarComplementario());
+                    System.out.println("Reintegro:");
+                    System.out.println(randomNumbers.generarReintegro());
                     break;
                 default:
                     System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");

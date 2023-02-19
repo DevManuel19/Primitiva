@@ -1,7 +1,7 @@
 package com.manuelportero.primitiva;
 
 public class GameMode {
-    public void juegoUnico(int[] num, int[] premio, int reintegro , int bonificacion ,int premioReintegro, int premioBonificacion{
+    public void juegoUnico(int[] num, int[] premio, int reintegro , int bonificacion ,int premioReintegro, int premioBonificacion){
         int premios = 0;
         boolean isReintegros = false;
         boolean isBonificaciones = false;
