@@ -7,11 +7,13 @@ import java.util.Scanner;
 
 public class RandomNumbers {
     private static Random random = new Random();
-    private int[] bombo1 = new int[49];
-    private int[] bombo2 = new int[10];
+    private int[] bombo1;
+    private int[] bombo2;
 
     public RandomNumbers() {
+        bombo1 = new int[49];
         this.bombo1 = rellenarBombo1();
+        bombo2 = new int[10];
         this.bombo2 = rellenarBombo2();
     }
     public int[] rellenarBombo1() {
