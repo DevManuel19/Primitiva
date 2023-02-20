@@ -31,11 +31,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Combinación ganadora:");
-                    System.out.println(Arrays.toString(randomNumbers.generarSeis(randomNumbers.rellenarBombo1())));
-                    System.out.println("Numero complementario:");
-                    System.out.println(randomNumbers.generarComplementario());
-                    System.out.println("Reintegro:");
-                    System.out.println(randomNumbers.generarReintegro());
+                    System.out.println(randomNumbers.combinarValores());
                     break;
                 default:
                     System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");

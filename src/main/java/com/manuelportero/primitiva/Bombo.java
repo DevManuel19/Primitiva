@@ -1,5 +1,7 @@
 package com.manuelportero.primitiva;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Bombo {
@@ -8,49 +10,61 @@ public class Bombo {
     private int[] bombo2;
 
     public Bombo() {
-        bombo1 = new int[49];
+        this(49,10);
+    }
+    public Bombo(int cantidadB1,int cantidadB2){
+        bombo1 = new int[cantidadB1];
         this.bombo1 = rellenarBombo1();
-        bombo2 = new int[10];
+        bombo2 = new int[cantidadB2];
         this.bombo2 = rellenarBombo2();
     }
-    public int[] rellenarBombo1() {
-        for (int i = 0; i < 49; i++) {
+    private int[] rellenarBombo1() {
+        for (int i = 0; i < bombo1.length; i++) {
             this.bombo1[i] = i + 1;
         }
         return bombo1;
     }
 
-    public int[] rellenarBombo2(){
-        for(int i = 0;i < 10;i++){
+    private int[] rellenarBombo2(){
+        for(int i = 0;i < bombo2.length;i++){
             bombo2[i] = i;
         }
         return bombo2;
     }
-    public int[] generarSeis(int[] bombo1){
+    private int[] generarSeisBoletoGanador(int[] bombo1){
         int[] boletoGanador = new int[6];
         int posicion = 0;
         for (int i = 0;i < boletoGanador.length;i++){
-            posicion = random.nextInt(48 - 0 + 1) + 0;
+            posicion = random.nextInt(bombo1.length);
             while(bombo1[posicion]==0){
-                posicion = random.nextInt(48 - 0 + 1) + 0;
+                posicion = random.nextInt(bombo1.length) ;
             }
             boletoGanador[i] = bombo1[posicion];
             bombo1[posicion] = 0;
         }
         return boletoGanador;
     }
-    public int generarComplementario(){
+    private int generarComplementario(){
         int posicion = 0;
-        do {posicion = random.nextInt(48 - 0 + 1) + 0;}
+        do {posicion = random.nextInt(bombo1.length);}
         while(bombo1[posicion]== 0);
-        int complementario = bombo1[posicion];
 
-        return complementario;
+        return bombo1[posicion];
     }
-    public int generarReintegro(){
-       int posicion = random.nextInt(9 - 0 + 1) + 0;
-       int reintegro = bombo2[posicion];
-       return reintegro;
+    private int generarReintegro(){
+       int posicion = random.nextInt(bombo2.length) ;
+        return bombo2[posicion];
+    }
+    public String combinarValores(){
+        StringBuilder sb = new StringBuilder();
+        int[] boletoSeis = generarSeisBoletoGanador(bombo1);
+        int complementario = generarComplementario();
+        int reintegro = generarReintegro();
+        for(int i = 0;i < boletoSeis.length;i++){
+            sb.append(boletoSeis[i]).append(" ");
+        }
+        sb.append(complementario).append(" ").append(reintegro);
+        return sb.toString();
     }
 
 }
