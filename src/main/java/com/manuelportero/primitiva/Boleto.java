@@ -1,4 +1,4 @@
 package com.manuelportero.primitiva;
 
-public class Gestor {
+public class Boleto {
 }

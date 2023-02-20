@@ -1,16 +1,13 @@
 package com.manuelportero.primitiva;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
-public class RandomNumbers {
+public class Bombo {
     private static Random random = new Random();
     private int[] bombo1;
     private int[] bombo2;
 
-    public RandomNumbers() {
+    public Bombo() {
         bombo1 = new int[49];
         this.bombo1 = rellenarBombo1();
         bombo2 = new int[10];
@@ -30,17 +27,17 @@ public class RandomNumbers {
         return bombo2;
     }
     public int[] generarSeis(int[] bombo1){
-        int[] boleto = new int[6];
+        int[] boletoGanador = new int[6];
         int posicion = 0;
-        for (int i = 0;i < boleto.length;i++){
+        for (int i = 0;i < boletoGanador.length;i++){
             posicion = random.nextInt(48 - 0 + 1) + 0;
             while(bombo1[posicion]==0){
                 posicion = random.nextInt(48 - 0 + 1) + 0;
             }
-            boleto[i] = bombo1[posicion];
+            boletoGanador[i] = bombo1[posicion];
             bombo1[posicion] = 0;
         }
-        return boleto;
+        return boletoGanador;
     }
     public int generarComplementario(){
         int posicion = 0;
