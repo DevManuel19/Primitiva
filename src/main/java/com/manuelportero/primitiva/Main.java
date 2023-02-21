@@ -39,8 +39,8 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Combinación ganadora:");
-                    System.out.println(bombo.combinarValores());
+                    //System.out.println("Combinación ganadora:");
+                    //System.out.println(bombo.combinarValores());
                     break;
                 default:
                     System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
