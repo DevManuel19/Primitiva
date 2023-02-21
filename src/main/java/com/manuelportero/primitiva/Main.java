@@ -3,9 +3,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    private static final int NUMEROS_JUGADOR = 6;
+
     public static Scanner lector = new Scanner(System.in);
-    public static Bombo randomNumbers = new Bombo();
+    public static Bombo bombo = new Bombo(Bombo.tamanyoBombo1, Bombo.tamanyoBombo2);
     /**
      * Bucle principal donde se llama a los menú. Pide si quiere jugar con numeros aleatorios o intrudicidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
@@ -13,10 +13,19 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        int[] num = new int[NUMEROS_JUGADOR];
+        int[] num = new int[6];
         int numLector;
         boolean valido;
         do {
+            System.out.println("Desea introducir el tamanyo de los bombos? n = NO / s = SI");
+            String afirmacion = lector.nextLine().toLowerCase();
+            if (afirmacion.equals("s")){
+                System.out.println("Intoduce el tamaño del bombo 1:");
+                Bombo.setTamanyoBombo1(lector.nextInt());
+                System.out.println("Intoduce el tamaño del bombo 2:");
+                Bombo.setTamanyoBombo2(lector.nextInt());
+                lector.nextLine();
+            }
             menuPrimitiva();
             numLector = lector.nextInt();
             lector.nextLine();
@@ -31,7 +40,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Combinación ganadora:");
-                    System.out.println(randomNumbers.combinarValores());
+                    System.out.println(bombo.combinarValores());
                     break;
                 default:
                     System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
