@@ -1,13 +1,42 @@
 package com.manuelportero.primitiva;
+import java.util.Arrays;
 
 public class Boleto {
-    private int[] boletoUsuario;
+    public Bombo bombo= new Bombo();
+        public static final int TAMANYO_BOLETO = 6;
+        public int[] boletoUsuario;
+        private int reintegro;
+        private int complementario;
 
-    public Boleto(int num1, int num2, int num3, int num4, int num5, int num6) {
-        boletoUsuario = new int[]{num1, num2, num3, num4, num5, num6};
+
+        public void rellenarBoleto(int num, int cont){
+            boletoUsuario[cont] = num;
+        }
+
+        public int[] getBoletoUsuario() {
+            return boletoUsuario;
+        }
+
+    public int getReintegro() {
+        return reintegro;
     }
 
-    public int[] getBoletoUsuario() {
-        return boletoUsuario;
+    public int getComplementario() {
+        return complementario;
     }
+    public Boleto(){
+        this.boletoUsuario=new int[TAMANYO_BOLETO];
+        reintegro= bombo.generarReintegro();
+        complementario= bombo.generarComplementario(boletoUsuario);
+
+    }
+
+
+    @Override
+        public String toString() {
+            return "Boleto{" +
+                    "boletoUsuario=" + Arrays.toString(boletoUsuario) +
+                    '}';
+        }
+
 }

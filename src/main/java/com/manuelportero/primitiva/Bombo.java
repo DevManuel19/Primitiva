@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Bombo {
-    public static int tamanyoBombo1 = 49;
-    public static int tamanyoBombo2 = 10;
+
     private static Random random = new Random();
     private int[] bombo1;
     private int[] bombo2;
+
 
     public Bombo(int cantidadB1,int cantidadB2){
         bombo1 = new int[cantidadB1];
@@ -17,13 +17,10 @@ public class Bombo {
         bombo2 = new int[cantidadB2];
         this.bombo2 = rellenarBombo2();
     }
-    public static void setTamanyoBombo1(int tamanyoBombo1) {
-        Bombo.tamanyoBombo1 = tamanyoBombo1;
+    public Bombo(int cant1, int cant2) {
+        this(49,10);
     }
 
-    public static void setTamanyoBombo2(int tamanyoBombo2) {
-        Bombo.tamanyoBombo2 = tamanyoBombo2;
-    }
     private int[] rellenarBombo1() {
         for (int i = 0; i < bombo1.length; i++) {
             this.bombo1[i] = i + 1;
@@ -50,21 +47,30 @@ public class Bombo {
         }
         return boletoGanador;
     }
-    private int generarComplementario(){
+    public int generarComplementario(int[] boleto){
         int posicion = 0;
+        for (int i = 0; i <boleto.length ; i++) {
+            for (int j = 0; j < bombo1.length; j++) {
+                if (boleto[i]==bombo1[j]){
+                    bombo1[j]=0;
+                }
+            }
+
+
+        }
         do {posicion = random.nextInt(bombo1.length);}
         while(bombo1[posicion]== 0);
 
         return bombo1[posicion];
     }
-    private int generarReintegro(){
+    public int generarReintegro(){
        int posicion = random.nextInt(bombo2.length) ;
         return bombo2[posicion];
     }
     public String combinarValores(){
         StringBuilder sb = new StringBuilder();
         int[] boletoSeis = generarSeisBoletoGanador(bombo1);
-        int complementario = generarComplementario();
+        int complementario = generarComplementario(boletoSeis);
         int reintegro = generarReintegro();
         for(int i = 0;i < boletoSeis.length;i++){
             sb.append(boletoSeis[i]).append(" ");
