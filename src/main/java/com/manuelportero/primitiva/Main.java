@@ -3,17 +3,20 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-
+    static int cant1=0;
+    static int cant2=0;
     public static Scanner lector = new Scanner(System.in);
-    public static Bombo bombo = new Bombo(Bombo.tamanyoBombo1, Bombo.tamanyoBombo2);
+    public static Bombo bombo = new Bombo(cant1, cant2);
+    public static Boleto boleto = new Boleto();;
     /**
-     * Bucle principal donde se llama a los menú. Pide si quiere jugar con numeros aleatorios o intrudicidos manualmente. Seguidamente,
+     * Bucle principal donde se llama a los menú. Pide si quiere jugar con números aleatorios o introducidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
      * @param args
      */
     public static void main(String[] args) {
 
         int[] num = new int[6];
+
         int numLector;
         boolean valido;
         do {
@@ -21,11 +24,13 @@ public class Main {
             String afirmacion = lector.nextLine().toLowerCase();
             if (afirmacion.equals("s")){
                 System.out.println("Intoduce el tamaño del bombo 1:");
-                Bombo.setTamanyoBombo1(lector.nextInt());
+                cant1=lector.nextInt();
                 System.out.println("Intoduce el tamaño del bombo 2:");
-                Bombo.setTamanyoBombo2(lector.nextInt());
+                cant2=lector.nextInt();
                 lector.nextLine();
             }
+
+
             menuPrimitiva();
             numLector = lector.nextInt();
             lector.nextLine();
@@ -33,14 +38,17 @@ public class Main {
                 case 1:
                     for (int i = 1; i < num.length + 1; i++) {
                         System.out.println("Introduce tu numero " + i + " de la seurte:");
-                        num[i] = lector.nextInt();
+                        boleto.rellenarBoleto(lector.nextInt(), i-1);
                         lector.nextLine();
-                        System.out.println(Arrays.toString(num));
+                        System.out.println(Arrays.toString(boleto.getBoletoUsuario()));
                     }
+                    System.out.println(Arrays.toString(boleto.getBoletoUsuario()));
+                    System.out.println(boleto.getComplementario());
+
                     break;
+
                 case 2:
-                    //System.out.println("Combinación ganadora:");
-                    //System.out.println(bombo.combinarValores());
+
                     break;
                 default:
                     System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
