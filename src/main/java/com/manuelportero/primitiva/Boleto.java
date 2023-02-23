@@ -5,6 +5,7 @@ public class Boleto {
     public Bombo bombo= new Bombo();
     public static final int TAMANYO_BOLETO = 6;
     private int[] boletoUsuario;
+    private String boletoAleatorio;
     private int reintegro;
     private int complementario;
 
@@ -12,10 +13,13 @@ public class Boleto {
     this.boletoUsuario=new int[TAMANYO_BOLETO];
     this.reintegro = bombo.generarReintegro();
     }
+    public String crearBoletoUsuarioAleatorio(){
+        return this.boletoAleatorio= bombo.combinarValores();
+    }
     public int generarComplementario(int[] boletoUsuario){
         return complementario = bombo.generarComplementario(boletoUsuario);
     }
-    public String combinarValores(){
+    public String combinarValoresUsuario(){
         StringBuilder sb = new StringBuilder();
         complementario = generarComplementario(getBoletoUsuario());
         for(int i = 0;i < getBoletoUsuario().length;i++){

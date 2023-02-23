@@ -8,12 +8,15 @@ public class Main {
     public static Scanner lector = new Scanner(System.in);
     public static Bombo bombo = new Bombo();
     public static Boleto boleto = new Boleto();
+    public static  Game game=new Game();
     /**
      * Bucle principal donde se llama a los menú. Pide si quiere jugar con números aleatorios o introducidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
      * @param args
      */
     public static void main(String[] args) {
+        String boletoUsuario=" ";
+        String boletoGanador=" ";
         int[] num = new int[6];
         int numLector;
         boolean valido;
@@ -29,11 +32,16 @@ public class Main {
                         lector.nextLine();
                     }
                     System.out.println("Este es tu numero de la suerte:");
-                    System.out.println(boleto.combinarValores());
+                    System.out.println(boleto.combinarValoresUsuario());
+                    boletoUsuario=boleto.combinarValoresUsuario();
+
 
                     break;
 
                 case 2:
+                    boletoUsuario= boleto.crearBoletoUsuarioAleatorio();
+                    boletoGanador= bombo.combinarValores();
+
 
                     break;
                 default:
@@ -49,6 +57,7 @@ public class Main {
                     case 1:
                         /*Jugaremos a un único sorteo y al finalizar mostrará la
                         combinación ganadora y si hemos obtenido algún premio.*/
+                        System.out.println(Arrays.toString(game.comprobarJuegoUnico(boletoGanador,boletoUsuario)));
                         break;
                     case 2:
                         /*El programa realizará varios sorteos hasta
