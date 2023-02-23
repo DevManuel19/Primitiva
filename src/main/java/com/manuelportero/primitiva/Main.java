@@ -6,44 +6,30 @@ public class Main {
     static int cant1=0;
     static int cant2=0;
     public static Scanner lector = new Scanner(System.in);
-    public static Bombo bombo = new Bombo(cant1, cant2);
-    public static Boleto boleto = new Boleto();;
+    public static Bombo bombo = new Bombo();
+    public static Boleto boleto = new Boleto();
     /**
      * Bucle principal donde se llama a los menú. Pide si quiere jugar con números aleatorios o introducidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
      * @param args
      */
     public static void main(String[] args) {
-
         int[] num = new int[6];
-
         int numLector;
         boolean valido;
         do {
-            System.out.println("Desea introducir el tamanyo de los bombos? n = NO / s = SI");
-            String afirmacion = lector.nextLine().toLowerCase();
-            if (afirmacion.equals("s")){
-                System.out.println("Intoduce el tamaño del bombo 1:");
-                cant1=lector.nextInt();
-                System.out.println("Intoduce el tamaño del bombo 2:");
-                cant2=lector.nextInt();
-                lector.nextLine();
-            }
-
-
             menuPrimitiva();
             numLector = lector.nextInt();
             lector.nextLine();
             switch (numLector) {
                 case 1:
                     for (int i = 1; i < num.length + 1; i++) {
-                        System.out.println("Introduce tu numero " + i + " de la seurte:");
+                        System.out.println("Introduce tu numero " + i + " de la suerte:");
                         boleto.rellenarBoleto(lector.nextInt(), i-1);
                         lector.nextLine();
-                        System.out.println(Arrays.toString(boleto.getBoletoUsuario()));
                     }
-                    System.out.println(Arrays.toString(boleto.getBoletoUsuario()));
-                    System.out.println(boleto.getComplementario());
+                    System.out.println("Este es tu numero de la suerte:");
+                    System.out.println(boleto.combinarValores());
 
                     break;
 

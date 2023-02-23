@@ -11,16 +11,12 @@ public class Bombo {
     private int[] bombo2;
 
 
-    public Bombo(int cantidadB1,int cantidadB2){
-        bombo1 = new int[cantidadB1];
+    public Bombo(){
+        bombo1 = new int[49];
         this.bombo1 = rellenarBombo1();
-        bombo2 = new int[cantidadB2];
+        bombo2 = new int[10];
         this.bombo2 = rellenarBombo2();
     }
-    public Bombo(int cant1, int cant2) {
-        this(49,10);
-    }
-
     private int[] rellenarBombo1() {
         for (int i = 0; i < bombo1.length; i++) {
             this.bombo1[i] = i + 1;
@@ -55,8 +51,6 @@ public class Bombo {
                     bombo1[j]=0;
                 }
             }
-
-
         }
         do {posicion = random.nextInt(bombo1.length);}
         while(bombo1[posicion]== 0);
