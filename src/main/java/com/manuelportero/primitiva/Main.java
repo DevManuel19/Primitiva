@@ -32,15 +32,15 @@ public class Main {
                         lector.nextLine();
                     }
                     System.out.println("Este es tu numero de la suerte:");
-                    System.out.println(boleto.combinarValoresUsuario());
                     boletoUsuario=boleto.combinarValoresUsuario();
+                    System.out.println(boletoUsuario);
 
 
                     break;
 
                 case 2:
-                    boletoUsuario= boleto.crearBoletoUsuarioAleatorio();
-                    boletoGanador= bombo.combinarValores();
+                    boletoUsuario = boleto.crearBoletoUsuarioAleatorio();
+                    boletoGanador = bombo.combinarValores();
 
 
                     break;
@@ -57,6 +57,8 @@ public class Main {
                     case 1:
                         /*Jugaremos a un único sorteo y al finalizar mostrará la
                         combinación ganadora y si hemos obtenido algún premio.*/
+                        System.out.println(Arrays.toString(boletoGanador.toCharArray()));
+                        System.out.println(Arrays.toString(boletoUsuario.toCharArray()));
                         System.out.println(Arrays.toString(game.comprobarJuegoUnico(boletoGanador,boletoUsuario)));
                         break;
                     case 2:

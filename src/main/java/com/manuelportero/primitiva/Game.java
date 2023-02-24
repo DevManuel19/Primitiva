@@ -14,14 +14,13 @@ public class Game {
         StringBuilder sb = new StringBuilder();
         int aciertos=0;
         for (int i = 0; i <boletoGanadorStr.length-2 ; i++) {
-            if (boletoGanadorStr[i].equals(boletoUsuarioStr[i]))
+            if (boletoGanadorStr[i].equals(boletoUsuarioStr[i])) {
                 aciertos++;
-
-
+            }
         }
-        if(boletoGanadorStr[boletoGanadorStr.length-1].equals(boletoUsuarioStr[boletoUsuarioStr.length-1]))
+        if(boletoGanadorStr[boletoGanadorStr.length-2].equals(boletoUsuarioStr[boletoUsuarioStr.length-2]))
             isReintegro= 1;
-        else if (boletoGanadorStr[boletoGanadorStr.length].equals(boletoUsuarioStr[boletoUsuarioStr.length])) {
+        else if (boletoGanadorStr[boletoGanadorStr.length -1].equals(boletoUsuarioStr[boletoUsuarioStr.length -1])) {
             isComplementario=1;
         }
 
