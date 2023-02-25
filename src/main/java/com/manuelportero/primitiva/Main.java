@@ -64,11 +64,13 @@ public class Main {
                     case 2:
                         /*El programa realizará varios sorteos hasta
                         que obtengamos algún tipo de premio (reintegro incluido)*/
+                        System.out.println(game.hastaPremio(boletoUsuario));
                         break;
                     case 3:
                         /*El programa realizará
                         varios sorteos hasta que obtengamos algún tipo de premio (reintegro
                         excluido).*/
+                        System.out.println(game.hastaPremioSinReintegro(boletoUsuario));
                         break;
                     case 4:
                         /*El programa realizará un ciclo de 10000 sorteos
@@ -80,6 +82,7 @@ public class Main {
                         la combinación ganadora y el número de sorteos jugados hasta alcanzar el
                         premio.
                         */
+                        System.out.println(game.hastaPremioEspecial(boletoUsuario));
                         break;
                     case 0:
                         //vuelve hacia atras

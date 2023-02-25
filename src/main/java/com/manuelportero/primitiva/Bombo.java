@@ -17,14 +17,14 @@ public class Bombo {
         bombo2 = new int[10];
         this.bombo2 = rellenarBombo2();
     }
-    private int[] rellenarBombo1() {
+    public int[] rellenarBombo1() {
         for (int i = 0; i < bombo1.length; i++) {
             this.bombo1[i] = i + 1;
         }
         return bombo1;
     }
 
-    private int[] rellenarBombo2(){
+    public int[] rellenarBombo2(){
         for(int i = 0;i < bombo2.length;i++){
             bombo2[i] = i;
         }

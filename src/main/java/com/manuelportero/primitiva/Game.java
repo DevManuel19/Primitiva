@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Game {
 
-
+    Bombo bombo =new Bombo();
     public int[] comprobarJuegoUnico(String boletoGanador, String boletoUsuario){
         //int[] boletoGanadorStr= new int[]{Integer.parseInt(Arrays.toString(boletoGanador.split(" ")))};
         String[] boletoGanadorStr = boletoGanador.split(" ");
@@ -14,19 +14,158 @@ public class Game {
         StringBuilder sb = new StringBuilder();
         int aciertos=0;
         for (int i = 0; i <boletoGanadorStr.length-2 ; i++) {
-            if (boletoGanadorStr[i].equals(boletoUsuarioStr[i])) {
-                aciertos++;
+            for (int j = 0; j <boletoGanadorStr.length-2 ; j++) {
+                if (boletoGanadorStr[i].equals(boletoUsuarioStr[j])) {
+                    aciertos++;
+                }
             }
         }
         if(boletoGanadorStr[boletoGanadorStr.length-2].equals(boletoUsuarioStr[boletoUsuarioStr.length-2]))
-            isReintegro= 1;
+            isComplementario= 1;
         else if (boletoGanadorStr[boletoGanadorStr.length -1].equals(boletoUsuarioStr[boletoUsuarioStr.length -1])) {
-            isComplementario=1;
+            isReintegro=1;
         }
 
 
         int[] resultado;
-        return resultado = new int[]{aciertos, isReintegro, isComplementario};
+        return resultado = new int[]{aciertos, isComplementario, isReintegro};
+    }
+    public int hastaPremio (String boletoUsuario) {
+        int count = 0;
+        String boletoGanador;
+        int isReintegro = 0;
+        int isComplementario = 0;
+        int aciertos = 0;
+        do {
+            isComplementario=0;
+            aciertos=0;
+            boletoGanador = bombo.combinarValores();
+            String[] boletoGanadorStr = boletoGanador.split(" ");
+            String[] boletoUsuarioStr = boletoUsuario.split(" ");
+
+            for (int i = 0; i <boletoGanadorStr.length-2 ; i++) {
+                for (int j = 0; j <boletoGanadorStr.length-2 ; j++) {
+                    if (boletoGanadorStr[i].equals(boletoUsuarioStr[j])) {
+                        aciertos++;
+                    }
+                }
+            }
+            if(boletoGanadorStr[boletoGanadorStr.length-2].equals(boletoUsuarioStr[boletoUsuarioStr.length-2]))
+                isComplementario++;
+            else if (boletoGanadorStr[boletoGanadorStr.length -1].equals(boletoUsuarioStr[boletoUsuarioStr.length -1])) {
+                isReintegro++;
+            }
+
+            rellenarBombos();
+            count++;
+        } while (aciertos < 3 && isReintegro==0);
+        int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
+        return count;
+    }
+    public int hastaPremioSinReintegro (String boletoUsuario) {
+        int count = 0;
+        String boletoGanador;
+        int isReintegro = 0;
+        int isComplementario = 0;
+        int aciertos = 0;
+        do {
+            isComplementario = 0;
+            aciertos = 0;
+            boletoGanador = bombo.combinarValores();
+            String[] boletoGanadorStr = boletoGanador.split(" ");
+            String[] boletoUsuarioStr = boletoUsuario.split(" ");
+
+            for (int i = 0; i < boletoGanadorStr.length - 2; i++) {
+                for (int j = 0; j < boletoGanadorStr.length - 2; j++) {
+                    if (boletoGanadorStr[i].equals(boletoUsuarioStr[j])) {
+                        aciertos++;
+                    }
+                }
+            }
+            if (boletoGanadorStr[boletoGanadorStr.length - 2].equals(boletoUsuarioStr[boletoUsuarioStr.length - 2]))
+                isComplementario++;
+            else if (boletoGanadorStr[boletoGanadorStr.length - 1].equals(boletoUsuarioStr[boletoUsuarioStr.length - 1])) {
+                isReintegro++;
+            }
+
+            rellenarBombos();
+            count++;
+        } while (aciertos < 3);
+        int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
+        return count;
+    }
+    public int hastaDiezMil (String boletoUsuario) {
+        int count = 0;
+        String boletoGanador;
+        int isReintegro = 0;
+        int isComplementario = 0;
+        int aciertos = 0;
+        do {
+            isComplementario = 0;
+            aciertos = 0;
+            boletoGanador = bombo.combinarValores();
+            String[] boletoGanadorStr = boletoGanador.split(" ");
+            String[] boletoUsuarioStr = boletoUsuario.split(" ");
+
+            for (int i = 0; i < boletoGanadorStr.length - 2; i++) {
+                for (int j = 0; j < boletoGanadorStr.length - 2; j++) {
+                    if (boletoGanadorStr[i].equals(boletoUsuarioStr[j])) {
+                        aciertos++;
+                    }
+                }
+            }
+            if (boletoGanadorStr[boletoGanadorStr.length - 2].equals(boletoUsuarioStr[boletoUsuarioStr.length - 2]))
+                isComplementario++;
+            else if (boletoGanadorStr[boletoGanadorStr.length - 1].equals(boletoUsuarioStr[boletoUsuarioStr.length - 1])) {
+                isReintegro++;
+            }
+
+            rellenarBombos();
+            count++;
+        } while (count<=10000);
+        int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
+        System.out.println(Arrays.toString(resultado));
+        return count;
+    }
+    public String hastaPremioEspecial (String boletoUsuario) {
+        int count = 0;
+        int isReintegro = 0;
+        int isComplementario = 0;
+        int aciertos = 0;
+        String boletoGanador;
+        StringBuilder sb=new StringBuilder();
+
+        do {
+            isComplementario=0;
+            aciertos=0;
+            boletoGanador = bombo.combinarValores();
+            String[] boletoGanadorStr = boletoGanador.split(" ");
+            String[] boletoUsuarioStr = boletoUsuario.split(" ");
+
+            for (int i = 0; i <boletoGanadorStr.length-2 ; i++) {
+                for (int j = 0; j <boletoGanadorStr.length-2 ; j++) {
+                    if (boletoGanadorStr[i].equals(boletoUsuarioStr[j])) {
+                        aciertos++;
+                    }
+                }
+            }
+            if(boletoGanadorStr[boletoGanadorStr.length-2].equals(boletoUsuarioStr[boletoUsuarioStr.length-2]))
+                isComplementario++;
+            else if (boletoGanadorStr[boletoGanadorStr.length -1].equals(boletoUsuarioStr[boletoUsuarioStr.length -1])) {
+                isReintegro++;
+            }
+
+            rellenarBombos();
+            count++;
+        } while (aciertos < 6 || isReintegro==0);
+        int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
+        String respuesta="Han hecho falta "+ count +" intentos con la combinacion ganadora "+ boletoGanador;
+        return respuesta;
+    }
+
+    private void rellenarBombos(){
+         bombo.rellenarBombo1();
+         bombo.rellenarBombo2();
     }
 
 
