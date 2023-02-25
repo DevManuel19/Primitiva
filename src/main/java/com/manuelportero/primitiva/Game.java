@@ -7,8 +7,8 @@ public class Game {
 
     public int[] comprobarJuegoUnico(String boletoGanador, String boletoUsuario){
         //int[] boletoGanadorStr= new int[]{Integer.parseInt(Arrays.toString(boletoGanador.split(" ")))};
-        String[] boletoGanadorStr= boletoGanador.split(" ");
-        String[] boletoUsuarioStr =boletoUsuario.split(" ");
+        String[] boletoGanadorStr = boletoGanador.split(" ");
+        String[] boletoUsuarioStr = boletoUsuario.split(" ");
         int isReintegro = 0;
         int isComplementario = 0;
         StringBuilder sb = new StringBuilder();

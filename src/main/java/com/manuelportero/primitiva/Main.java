@@ -15,8 +15,8 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        String boletoUsuario=" ";
-        String boletoGanador=" ";
+        String boletoUsuario = "";
+        String boletoGanador = "";
         int[] num = new int[6];
         int numLector;
         boolean valido;
@@ -57,8 +57,8 @@ public class Main {
                     case 1:
                         /*Jugaremos a un único sorteo y al finalizar mostrará la
                         combinación ganadora y si hemos obtenido algún premio.*/
-                        System.out.println(Arrays.toString(boletoGanador.toCharArray()));
-                        System.out.println(Arrays.toString(boletoUsuario.toCharArray()));
+                        System.out.println(boletoGanador);
+                        System.out.println(boletoUsuario);
                         System.out.println(Arrays.toString(game.comprobarJuegoUnico(boletoGanador,boletoUsuario)));
                         break;
                     case 2:
