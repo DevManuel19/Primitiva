@@ -6,20 +6,25 @@ public class Main {
     static int cant1=0;
     static int cant2=0;
     public static Scanner lector = new Scanner(System.in);
-    public static Bombo bombo = new Bombo();
     public static Boleto boleto = new Boleto();
-    public static  Game game=new Game();
+    public static  Game game = new Game();
     /**
      * Bucle principal donde se llama a los menú. Pide si quiere jugar con números aleatorios o introducidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
      * @param args
      */
+    // todo corregir error vuelta al menu principal
+    // todo JavaDocs
+    // todo intento de optimizacion de código
+    // todo pinceladas para mejorar el diseño
+    // todo revisar estructura menu principal
+    // todo validación de entrada del usuario
+    // todo revisar tabulaciones
+    // todo revisar convenios de escritura
     public static void main(String[] args) {
         String boletoUsuario = "";
-        String boletoGanador = "";
         int[] num = new int[6];
         int numLector;
-        boolean valido;
         do {
             menuPrimitiva();
             numLector = lector.nextInt();
@@ -32,17 +37,13 @@ public class Main {
                         lector.nextLine();
                     }
                     System.out.println("Este es tu numero de la suerte:");
-                    boletoUsuario=boleto.combinarValoresUsuario();
+                    boletoUsuario = boleto.combinarValoresUsuario();
                     System.out.println(boletoUsuario);
-
 
                     break;
 
                 case 2:
                     boletoUsuario = boleto.crearBoletoUsuarioAleatorio();
-
-
-
                     break;
                 default:
                     System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
@@ -57,9 +58,8 @@ public class Main {
                     case 1:
                         /*Jugaremos a un único sorteo y al finalizar mostrará la
                         combinación ganadora y si hemos obtenido algún premio.*/
-                        System.out.println(boletoGanador);
                         System.out.println(boletoUsuario);
-                        System.out.println(Arrays.toString(game.comprobarJuegoUnico(boletoUsuario)));
+                        System.out.println(game.comprobarJuegoUnico(boletoUsuario));
                         break;
                     case 2:
                         /*El programa realizará varios sorteos hasta
@@ -87,7 +87,8 @@ public class Main {
                         break;
                     case 0:
                         //vuelve hacia atras
-                        return;
+                        menuPrimitiva();
+                        break;
                     default:
                         System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
                         break;
