@@ -40,7 +40,7 @@ public class Main {
 
                 case 2:
                     boletoUsuario = boleto.crearBoletoUsuarioAleatorio();
-                    boletoGanador = bombo.combinarValores();
+
 
 
                     break;
@@ -59,20 +59,23 @@ public class Main {
                         combinación ganadora y si hemos obtenido algún premio.*/
                         System.out.println(boletoGanador);
                         System.out.println(boletoUsuario);
-                        System.out.println(Arrays.toString(game.comprobarJuegoUnico(boletoGanador,boletoUsuario)));
+                        System.out.println(Arrays.toString(game.comprobarJuegoUnico(boletoUsuario)));
                         break;
                     case 2:
                         /*El programa realizará varios sorteos hasta
                         que obtengamos algún tipo de premio (reintegro incluido)*/
+                        System.out.println(game.hastaPremio(boletoUsuario));
                         break;
                     case 3:
                         /*El programa realizará
                         varios sorteos hasta que obtengamos algún tipo de premio (reintegro
                         excluido).*/
+                        System.out.println(game.hastaPremioSinReintegro(boletoUsuario));
                         break;
                     case 4:
                         /*El programa realizará un ciclo de 10000 sorteos
                         y al final mostrará un resumen de los premios obtenidos de cada categoría*/
+                        System.out.println(game.hastaDiezMil(boletoUsuario));
                         break;
                     case 5:
                         /*El programa jugará
@@ -80,6 +83,7 @@ public class Main {
                         la combinación ganadora y el número de sorteos jugados hasta alcanzar el
                         premio.
                         */
+                        System.out.println(game.hastaPremioEspecial(boletoUsuario));
                         break;
                     case 0:
                         //vuelve hacia atras
