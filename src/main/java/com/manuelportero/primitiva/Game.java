@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Game {
 
     Bombo bombo =new Bombo();
-    public int[] comprobarJuegoUnico(String boletoGanador, String boletoUsuario){
-        //int[] boletoGanadorStr= new int[]{Integer.parseInt(Arrays.toString(boletoGanador.split(" ")))};
+    public int[] comprobarJuegoUnico(String boletoUsuario){
+        String boletoGanador=bombo.combinarValores();
         String[] boletoGanadorStr = boletoGanador.split(" ");
         String[] boletoUsuarioStr = boletoUsuario.split(" ");
         int isReintegro = 0;
@@ -30,12 +30,13 @@ public class Game {
         int[] resultado;
         return resultado = new int[]{aciertos, isComplementario, isReintegro};
     }
-    public int hastaPremio (String boletoUsuario) {
+    public String hastaPremio (String boletoUsuario) {
         int count = 0;
         String boletoGanador;
         int isReintegro = 0;
         int isComplementario = 0;
         int aciertos = 0;
+
         do {
             isComplementario=0;
             aciertos=0;
@@ -60,15 +61,17 @@ public class Game {
             count++;
         } while (aciertos < 3 && isReintegro==0);
         int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
-        return count;
+        String respuesta="";
+        return respuesta;
     }
-    public int hastaPremioSinReintegro (String boletoUsuario) {
+    public String hastaPremioSinReintegro (String boletoUsuario) {
         int count = 0;
         String boletoGanador;
         int isReintegro = 0;
         int isComplementario = 0;
         int aciertos = 0;
         do {
+            isReintegro=0;
             isComplementario = 0;
             aciertos = 0;
             boletoGanador = bombo.combinarValores();
@@ -92,15 +95,22 @@ public class Game {
             count++;
         } while (aciertos < 3);
         int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
-        return count;
+        String respuesta="";
+        return respuesta;
     }
-    public int hastaDiezMil (String boletoUsuario) {
+    public String hastaDiezMil (String boletoUsuario) {
         int count = 0;
         String boletoGanador;
         int isReintegro = 0;
         int isComplementario = 0;
         int aciertos = 0;
-        do {
+        int premioEspecial=0;
+        int primerPremio=0;
+        int segundoPremio=0;
+        int tercerPremio=0;
+        int cuartoPremio=0;
+        int quintoPremio=0;
+        for (int z = 0; z <10000 ; z++) {
             isComplementario = 0;
             aciertos = 0;
             boletoGanador = bombo.combinarValores();
@@ -119,13 +129,25 @@ public class Game {
             else if (boletoGanadorStr[boletoGanadorStr.length - 1].equals(boletoUsuarioStr[boletoUsuarioStr.length - 1])) {
                 isReintegro++;
             }
+            if (aciertos == 6 && isReintegro==1){
+                premioEspecial++;
+            } else if (aciertos==6) {
+                primerPremio++;
+            } else if (aciertos== 5 && isComplementario==1)  {
+                segundoPremio++;
+            } else if (aciertos==5) {
+                tercerPremio++;
+            } else if (aciertos==4) {
+                cuartoPremio++;
+            } else if (aciertos==3) {
+                quintoPremio++;
+            }
 
             rellenarBombos();
             count++;
-        } while (count<=10000);
-        int[] resultado = new int[]{aciertos, isComplementario, isReintegro};
-        System.out.println(Arrays.toString(resultado));
-        return count;
+        }
+        String resultado=("En 10000 tiradas has obtenido  "+ premioEspecial+"  premios especiales  "+primerPremio+"  primero  "+segundoPremio+"  segundo  "+tercerPremio+"  tercero  "+cuartoPremio+"  cuarto  "+quintoPremio+"  quintopuesto ");
+        return resultado;
     }
     public String hastaPremioEspecial (String boletoUsuario) {
         int count = 0;
