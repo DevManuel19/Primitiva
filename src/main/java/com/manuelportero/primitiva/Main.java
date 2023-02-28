@@ -116,10 +116,17 @@ public class Main {
     
     private static void boletoUsuarioIntroducido(){
         int[] tamanyo = new int[6];
+        int num = 0;
         for (int i = 1; i < tamanyo.length + 1; i++) {
-            System.out.println("Introduce tu numero " + i + " de la suerte:");
-            boleto.rellenarBoleto(lector.nextInt(), i-1);
-            lector.nextLine();
+            System.out.println("Introduce tu numero " + i + " de la suerte entre [1-49]:");
+            num = lector.nextInt();
+            if(num > 49 || num < 1){
+                System.out.println("Introduce un numero entre [1-49]");
+                i = i-1;
+            }else {
+                boleto.rellenarBoleto(num, i - 1);
+                lector.nextLine();
+            }
         }
         boletoUsuario = boleto.combinarValoresUsuario();
     }
