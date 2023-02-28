@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f543e266-96e2-4ae7-80b6-0b877c6b7b01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Boleto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Boleto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Bombo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Bombo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/manuelportero/primitiva/Main.java" afterDir="false" />

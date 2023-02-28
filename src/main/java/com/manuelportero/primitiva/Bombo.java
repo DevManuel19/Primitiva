@@ -73,7 +73,6 @@ public class Bombo {
         }
         do {posicion = random.nextInt(bombo1.length);}
         while(bombo1[posicion]== 0);
-
         return bombo1[posicion];
     }
 

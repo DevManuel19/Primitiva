@@ -11,35 +11,29 @@ public class Main {
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
      * @param args
      */
-    // todo corregir error vuelta al menu principal
-    // todo JavaDocs
-    // todo intento de optimizacion de código
-    // todo pinceladas para mejorar el diseño
-    // todo revisar estructura menu principal
-    // todo validación de entrada del usuario
-    // todo revisar tabulaciones
-    // todo revisar convenios de escritura
+
     public static void main(String[] args) {
         
-        int numLector;
-        do {
-            menuPrimitiva();
-            numLector = lector.nextInt();
-            lector.nextLine();
-            switch (numLector) {
-                case 1:
-                    boletoUsuarioIntroducido();
-                    System.out.println("Este es tu boleto de la suerte:" + boletoUsuario);
-                    break;
+        int numLector = 0;
+        while(numLector == 0) {
+            do {
+                menuPrimitiva();
+                numLector = lector.nextInt();
+                lector.nextLine();
+                switch (numLector) {
+                    case 1:
+                        boletoUsuarioIntroducido();
+                        System.out.println("Este es tu boleto de la suerte: " + boletoUsuario);
+                        break;
 
-                case 2:
-                    boletoUsuario = boleto.crearBoletoUsuarioAleatorio();
-                    break;
-                default:
-                    System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
-                    break;
-            }
-            }while (numLector != 1 && numLector != 2);
+                    case 2:
+                        boletoUsuario = boleto.crearBoletoUsuarioAleatorio();
+                        break;
+                    default:
+                        System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
+                        break;
+                }
+            } while (numLector != 1 && numLector != 2);
             do {
                 menuModalidad();
                 numLector = lector.nextInt();
@@ -77,13 +71,13 @@ public class Main {
                         break;
                     case 0:
                         //vuelve hacia atras
-                        menuPrimitiva();
                         break;
                     default:
                         System.out.println("ERROR. INTRODUCE UN CARACTER VALIDO");
                         break;
                 }
-            }while(numLector > 5 || numLector < 0);
+            } while (numLector > 5 || numLector < 0);
+        }
 
     }
 
@@ -92,13 +86,14 @@ public class Main {
      * de forma aleatoria.
      */
     public static void menuPrimitiva(){
-        System.out.println("********************");
-        System.out.println("** MENU PRIMITIVA **");
-        System.out.println("********************");
-        System.out.println("<<Desea introducir tus numeros de la suerte manuelmente?>>");
-        System.out.println("------------------------------------------------------");
-        System.out.println("1.-Si, deseo introducirlos.");
-        System.out.println("2.-No, deseo que sean aleatorios.");
+        System.out.println("■──────────────────────────────────────────────────────■");
+        System.out.println("│                     MENU PRIMITIVA                   │");
+        System.out.println("■──────────────────────────────────────────────────────■");
+        System.out.println("[Desea introducir tus numeros de la suerte manuelmente?]");
+        System.out.println("────────────────────────────────────────────────────────");
+        System.out.println("■ 1 Si,deseo introducirlos.");
+        System.out.println("■ 2 No,deseo que sean aleatorios.");
+        System.out.println("────────────────────────────────────────────────────────");
     }
 
     /**
@@ -106,27 +101,27 @@ public class Main {
      * seleccionar cada una de ellas.
      */
     public static void menuModalidad(){
-        System.out.println("********************");
-        System.out.println("** MENU MODALIDAD **");
-        System.out.println("********************");
-        System.out.println("---------------------");
-        System.out.println("1.-Juego único.");
-        System.out.println("2.-Jugar hasta obtener premio..");
-        System.out.println("3.-Jugar hasta obtener premio (sin reintegro).");
-        System.out.println("4.-Ciclo de 10k sorteos.");
-        System.out.println("5.-Jugar hasta obtener premio categoría especial.");
-        System.out.println("0.-Volver al menú primitiva.");
+        System.out.println("■──────────────────────────────────────────────────────■");
+        System.out.println("│                     MENU MODALIDAD                   │");
+        System.out.println("■──────────────────────────────────────────────────────■");
+        System.out.println("────────────────────────────────────────────────────────");
+        System.out.println("■ 1 Juego único.");
+        System.out.println("■ 2 Jugar hasta obtener premio.");
+        System.out.println("■ 3 Jugar hasta obtener premio (sin reintegro).");
+        System.out.println("■ 4 Ciclo de 10k sorteos.");
+        System.out.println("■ 5 Jugar hasta obtener premio categoría especial.");
+        System.out.println("■ 0 Volver al menú primitiva.");
+        System.out.println("────────────────────────────────────────────────────────");
     }
     
-    private static String boletoUsuarioIntroducido(){
+    private static void boletoUsuarioIntroducido(){
         int[] tamanyo = new int[6];
         for (int i = 1; i < tamanyo.length + 1; i++) {
             System.out.println("Introduce tu numero " + i + " de la suerte:");
             boleto.rellenarBoleto(lector.nextInt(), i-1);
             lector.nextLine();
         }
-        System.out.println("Este es tu numero de la suerte:");
-        return boletoUsuario = boleto.combinarValoresUsuario();
+        boletoUsuario = boleto.combinarValoresUsuario();
     }
 }
 

@@ -160,7 +160,7 @@ public class Game {
 
             rellenarBombos();
         }
-        return "En 10000 tiradas has obtenido:  "+ premioEspecial+"  premios especiales,  "+primerPremio+"  de primera categoria, "+segundoPremio+"  de primera segunda,  "+tercerPremio+"  de tercera categoria,  "+cuartoPremio+"  de cuarta categoria,  "+quintoPremio+"  de quinta categoria, ";
+        return "En 10000 tiradas has obtenido:\n"+ premioEspecial+" Premios especiales.\n"+primerPremio+" Premios de 1ª categoria.\n"+segundoPremio+" Premios de 2ª categoria.\n"+tercerPremio+" Premios de 3ª categoria.\n"+cuartoPremio+" Premios de 4ª categoria.\n"+quintoPremio+" Premios de 5ª categoria.";
     }
     /**
      * Éste método ejecuta un bucle do while que esta en funcionamiento hasta que el usuario consiga ganar un premio especial. Convierte el boleto ganador y
@@ -170,17 +170,16 @@ public class Game {
      */
     public String hastaPremioEspecial (String boletoUsuario) {
         int count = 0;
-        int isReintegro = 0;
-        int aciertos = 0;
+        int reintegro = 0;
+        int aciertos;
         String boletoGanador;
-        StringBuilder sb=new StringBuilder();
 
         do {
-            aciertos=0;
+            aciertos= 0;
             boletoGanador = bombo.combinarValores();
             String[] boletoGanadorStr = boletoGanador.split(" ");
             String[] boletoUsuarioStr = boletoUsuario.split(" ");
-
+            //Comparación de los 6 primeros valores.
             for (int i = 0; i <boletoGanadorStr.length-2 ; i++) {
                 for (int j = 0; j <boletoGanadorStr.length-2 ; j++) {
                     if (boletoGanadorStr[i].equals(boletoUsuarioStr[j])) {
@@ -188,15 +187,14 @@ public class Game {
                     }
                 }
             }
-            if(boletoGanadorStr[boletoGanadorStr.length-2].equals(boletoUsuarioStr[boletoUsuarioStr.length-2]))
-                ;
-            else if (boletoGanadorStr[boletoGanadorStr.length -1].equals(boletoUsuarioStr[boletoUsuarioStr.length -1])) {
-                isReintegro++;
+            //Si los 6 valores anteriores coinciden y el reintegro es igual dale el valor de 1 al reintegro
+            if(aciertos == 6 && boletoGanadorStr[boletoGanadorStr.length -1].equals(boletoUsuarioStr[boletoUsuarioStr.length -1])) {
+                reintegro++;
             }
 
             rellenarBombos();
             count++;
-        } while (aciertos < 6 || isReintegro==0);
+        } while (aciertos < 6 || reintegro==0);
         return "Han hecho falta "+ count +" intentos con la combinacion ganadora "+ boletoGanador + " para obtener el premio de categoria especial";
     }
 
@@ -219,38 +217,38 @@ public class Game {
 
         if(num == 1){
             if(resultado[0] == 3 ){
-                return "Has obtenido un premio de 5º categoria.";
+                return "Has obtenido un premio de 5ª categoria.";
             }else if(resultado[0] == 4){
-                return "Has obtenido un premio de 4º categoria";
+                return "Has obtenido un premio de 4ª categoria.";
             }else if(resultado[0] == 5 ){
-                return "Has obtenido un premio de 3º categoria";
+                return "Has obtenido un premio de 3ª categoria.";
             }else if(resultado[0] == 5 && resultado[1] == 1){
-                return "Has obtenido un premio de 2º categoria";
+                return "Has obtenido un premio de 2ª categoria.";
             }else if(resultado[0] == 6){
-                return "Has obtenido un premio de 1º categoria";
+                return "Has obtenido un premio de 1ª categoria.";
             }else if(resultado[0] == 6 && resultado[2] == 1){
                 return "Has obtenido un premio de categoria especial";
             }else if(resultado[2] == 1){
-                return "Ha obtenido un reintegro de su boleto";
+                return "Ha obtenido un reintegro de su boleto.";
             }
-            return "No has obtenido ningun premio";
+            return "No has obtenido ningun premio.";
         }else{
             if(resultado[0] == 3){
-                return "Has obtenido un premio de 5º categoria.";
+                return "Has obtenido un premio de 5ª categoria.";
             }else if(resultado[0] == 4){
-                return "Has obtenido un premio de 4º categoria";
+                return "Has obtenido un premio de 4ª categoria.";
             }else if(resultado[0] == 5){
-                return "Has obtenido un premio de 3º categoria";
+                return "Has obtenido un premio de 3ª categoria.";
             }else if(resultado[0] == 5){
-                return "Has obtenido un premio de 2º categoria";
+                return "Has obtenido un premio de 2ª categoria.";
             }else if(resultado[0] == 6){
-                return "Has obtenido un premio de 1º categoria";
+                return "Has obtenido un premio de 1ª categoria.";
             }else if(resultado[0] == 6){
                 return "Has obtenido un premio de categoria especial";
             }else if(resultado[2] == 1){
-                return "Se le ha devuelto el dinero de su boleto";
+                return "Se le ha devuelto el dinero de su boleto.";
             }
-            return "No has obtenido ningun premio";
+            return "No has obtenido ningun premio.";
         }
     }
 }
