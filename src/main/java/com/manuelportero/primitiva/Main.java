@@ -1,13 +1,11 @@
 package com.manuelportero.primitiva;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    static int cant1=0;
-    static int cant2=0;
     public static Scanner lector = new Scanner(System.in);
     public static Boleto boleto = new Boleto();
     public static  Game game = new Game();
+    private static String boletoUsuario = "";
     /**
      * Bucle principal donde se llama a los menú. Pide si quiere jugar con números aleatorios o introducidos manualmente. Seguidamente,
      * solicita los numeros en caso de que sean introducidos manualmente. Para finalizar muestra un segundo menú con las modalidades a elegir.
@@ -22,8 +20,7 @@ public class Main {
     // todo revisar tabulaciones
     // todo revisar convenios de escritura
     public static void main(String[] args) {
-        String boletoUsuario = "";
-        int[] num = new int[6];
+        
         int numLector;
         do {
             menuPrimitiva();
@@ -31,15 +28,8 @@ public class Main {
             lector.nextLine();
             switch (numLector) {
                 case 1:
-                    for (int i = 1; i < num.length + 1; i++) {
-                        System.out.println("Introduce tu numero " + i + " de la suerte:");
-                        boleto.rellenarBoleto(lector.nextInt(), i-1);
-                        lector.nextLine();
-                    }
-                    System.out.println("Este es tu numero de la suerte:");
-                    boletoUsuario = boleto.combinarValoresUsuario();
-                    System.out.println(boletoUsuario);
-
+                    boletoUsuarioIntroducido();
+                    System.out.println("Este es tu boleto de la suerte:" + boletoUsuario);
                     break;
 
                 case 2:
@@ -126,6 +116,17 @@ public class Main {
         System.out.println("4.-Ciclo de 10k sorteos.");
         System.out.println("5.-Jugar hasta obtener premio categoría especial.");
         System.out.println("0.-Volver al menú primitiva.");
+    }
+    
+    private static String boletoUsuarioIntroducido(){
+        int[] tamanyo = new int[6];
+        for (int i = 1; i < tamanyo.length + 1; i++) {
+            System.out.println("Introduce tu numero " + i + " de la suerte:");
+            boleto.rellenarBoleto(lector.nextInt(), i-1);
+            lector.nextLine();
+        }
+        System.out.println("Este es tu numero de la suerte:");
+        return boletoUsuario = boleto.combinarValoresUsuario();
     }
 }
 
